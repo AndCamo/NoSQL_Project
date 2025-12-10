@@ -1,0 +1,10 @@
+._*
+.DS_Store
+.idea/
+/data/
+/ldbc_data/
+/log/*
+/neo4j_data/
+/venv/
+
+/__pycache__

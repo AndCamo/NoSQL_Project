@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoSQL Query Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div class="header">
+            <h1><i class="fas fa-database"></i> NoSQL Query Platform</h1>
+        </div>
+
+
+        <div class="query-grid">
+            <div class="query-card" data-query="1">
+                <i class="fas fa-map-marker-alt icon"></i>
+                <h3>Query 1: Location Finder</h3>
+                <p>Find university and company locations for a person</p>
+            </div>
+
+            <div class="query-card" data-query="2">
+                <i class="fa-solid fa-people-arrows icon"></i>
+                <h3>Query 2: Known Colleagues</h3>
+                <p>Your second query description here</p>
+            </div>
+
+            <div class="query-card" data-query="3">
+                <i class="fa-solid fa-thumbs-up icon"></i>
+                <h3>Query 3: Most Likes</h3>
+                <p>Find the most influent Person</p>
+            </div>
+
+            <div class="query-card" data-query="4">
+                <i class="fa-solid fa-tag icon"></i>
+                <h3>Query 4: Top Tag</h3>
+                <p>Find the tag with the most usage during a given time period.</p>
+            </div>
+
+            <div class="query-card" data-query="5">
+                <i class="fa-solid fa-star icon"></i>
+                <h3>Query 5: Most Influent Person</h3>
+                <p>Identify the most popular user in a university</p>
+            </div>
+        </div>
+
+        <!-- Query 1 Form -->
+        <div class="form-section" id="form-1">
+            <div class="form-header">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>Query 1: Location Finder</h2>
+            </div>
+            <p>Identify the location of the university where a certain person studied and the location of the company where they work.</p>
+            <form id="query-form-1">
+                <div class="form-group">
+                    <label for="param1-1"><i class="fas fa-user"></i> Person ID</label>
+                    <input type="number" class="form-control" id="param1-1" placeholder="Enter person's ID" required>
+                </div>
+                <button type="submit" class="btn-execute">
+                    <i class="fas fa-play"></i> Execute Query
+                </button>
+            </form>
+        </div>
+
+        <!-- Query 2 Form -->
+        <div class="form-section" id="form-2">
+            <div class="form-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>Query 2: Known Colleagues</h2>
+            </div>
+            <p>Given a person, identify all other people they know within the company where they work or the university where they study.</p>
+            <form id="query-form-2">
+                <div class="form-group">
+                    <label for="param2-1"><i class="fas fa-user"></i> Person ID</label>
+                    <input type="number" class="form-control" id="param2-1" placeholder="Enter person's ID" required>
+                </div>
+                <button type="submit" class="btn-execute">
+                    <i class="fas fa-play"></i> Execute Query
+                </button>
+            </form>
+        </div>
+
+        <!-- Query 3 Form -->
+        <div class="form-section" id="form-3">
+            <div class="form-header">
+                <i class="fas fa-thumbs-up"></i>
+                <h2>Query 3: Most Likes</h2>
+            </div>
+            <p>Find the most popular person in terms of total likes across all their posts.</p>
+            <form id="query-form-3">
+                <button type="submit" class="btn-execute">
+                    <i class="fas fa-play"></i> Execute Query
+                </button>
+            </form>
+        </div>
+
+        <!-- Query 4 Form -->
+        <div class="form-section" id="form-4">
+            <div class="form-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>Query 4: Top Tag</h2>
+            </div>
+            <p>Find the tag with the most usage during a given time period.</p>
+            <form id="query-form-4">
+                <div class="form-group">
+                    <label for="param4-1"><i class="fa-solid fa-calendar"></i> Begind Date</label>
+                    <input type="date" class="form-control" id="param4-1" required>
+                </div>
+                <div class="form-group">
+                    <label for="param4-2"><i class="fa-solid fa-calendar"></i> End Date</label>
+                    <input type="date" class="form-control" id="param4-2" required>
+                </div>
+                <button type="submit" class="btn-execute">
+                    <i class="fas fa-play"></i> Execute Query
+                </button>
+            </form>
+        </div>
+
+        <!-- Query 5 Form -->
+        <div class="form-section" id="form-5">
+            <div class="form-header">
+                <i class="fas fa-search"></i>
+                <h2>Query 5: Most Influent Person</h2>
+            </div>
+            <p>Identify the most popular user within a university (in terms of people who know them)</p>
+            <form id="query-form-5">
+                <div class="form-group">
+                    <label for="param5-1"><i class="fa-solid fa-graduation-cap"></i> University ID</label>
+                    <input type="number" class="form-control" id="param5-1" placeholder="Enter University ID" required>
+                </div>
+                <button type="submit" class="btn-execute">
+                    <i class="fas fa-play"></i> Execute Query
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="results">
+            <div class="results-header">
+                <h2><i class="fas fa-check-circle"></i> Query Results</h2>
+                <span class="badge-success"><i class="fas fa-check"></i> Success</span>
+            </div>
+            <div id="results-content"></div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text">Executing Query...</div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+</body>
+</html>
