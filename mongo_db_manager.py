@@ -106,6 +106,7 @@ class MongoDBManager:
             company_ids = []
 
         print(f"company_ids: {company_ids}")
+
         # build the list of organizations ids (University and Companies)
         organization_ids = university_ids + company_ids
 

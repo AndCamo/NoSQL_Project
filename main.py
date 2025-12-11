@@ -1,12 +1,11 @@
 import json
-
 import eel
 import time
 from mongo_db_manager import MongoDBManager
 from neo4j_manager import Neo4jManager
 import datetime
 
-# Initialize Eel with the web folder
+# Eel web folder
 eel.init('web')
 
 MONGO_URI = "mongodb://localhost:27017"
@@ -117,7 +116,6 @@ def execute_query_3():
     """
     Find the most popular person in terms of total likes across all their posts.
     """
-
     manager = Neo4jManager(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
     try:
         top_creator = manager.get_most_liked_person()
@@ -145,7 +143,6 @@ def execute_query_4(param1, param2):
     """
     Find the tag with the most usage during a given time period.
     """
-
     manager = Neo4jManager(NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD)
     try:
         begin_date_elements = param1.split('-')

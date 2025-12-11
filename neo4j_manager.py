@@ -129,7 +129,6 @@ class Neo4jManager:
         LIMIT 5
         """
         with self.driver.session() as session:
-            # Pass the datetime objects directly; the driver converts them to Neo4j DateTime
             result = session.run(query, begin_date=begin_date, end_date=end_date)
             return [record.data() for record in result]
 
