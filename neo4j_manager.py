@@ -126,15 +126,12 @@ class Neo4jManager:
         RETURN tag.name AS TagName,
                count(post) AS TotalUsages
         ORDER BY TotalUsages DESC
-        LIMIT 1
+        LIMIT 5
         """
         with self.driver.session() as session:
             # Pass the datetime objects directly; the driver converts them to Neo4j DateTime
             result = session.run(query, begin_date=begin_date, end_date=end_date)
-            record = result.single()
-            if record:
-                return record.data()
-            return None
+            return [record.data() for record in result]
 
     def get_known_from_list(self, person_id, id_list):
         """Returns the people that the given person knows from the given list."""
@@ -149,7 +146,6 @@ class Neo4jManager:
 
     def get_most_popular_in_list(self, person_ids):
         """ get the most known person from a list of people """
-
         query = """
             MATCH (person:Person)-[:KNOWS]->(known:Person)
             WHERE known.id IN $person_ids
